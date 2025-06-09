@@ -143,7 +143,7 @@ class ChallengeService {
       const challengeRef = doc(db, 'challenges', challengeId);
       const participant = {
         user_uid: userId,
-        team_id: teamId,
+        ...(teamId && { team_id: teamId }),
         joined_at: Timestamp.now(),
         status: 'active' as const,
       };
